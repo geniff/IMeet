@@ -2,6 +2,7 @@ package DAO;
 
 import Model.Profile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,18 +28,21 @@ public class ProfileDAO {
         return Optional.ofNullable(profiles.get(id));
     }
 
-    public void Update()
+    public void update(Profile profile)
     {
-
+        if (profile != null && profile.getId() != null)
+        {
+            profiles.put(profile.getId(), profile);
+        }
     }
 
-    public boolean Delete()
+    public boolean delete()
     {
-        return false;
+        return profiles.remove(idStorage.get()) != null;
     }
 
     public List<Profile> findAll()
     {
-        return null;
+        return new ArrayList<>(profiles.values());
     }
 }

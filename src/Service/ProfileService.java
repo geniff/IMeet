@@ -9,10 +9,12 @@ import java.util.Optional;
 public class ProfileService {
     private final ProfileDAO dao;
 
+    //Принимает объект и сохраняет его в поле. Это позволяет сервису использовать DAO для взаимодействия с БД
     public ProfileService(ProfileDAO dao) {
         this.dao = dao;
     }
 
+    //Сохраняет объект в базе данных и возвращает сохраненный объект
     public Profile save(Profile profile) {
         dao.save(profile);
         return profile;
@@ -28,18 +30,28 @@ public class ProfileService {
         }
     }
 
-    public void Update()
+    public void update(Profile profile)
     {
-
+        if (profile != null)
+        {
+            dao.update(profile);
+        }
     }
 
-    public boolean Delete()
+    public boolean delete(Long id)
     {
-        return false;
+        if(id != null)
+        {
+            return dao.delete();
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public List<Profile> findAll()
     {
-        return null;
+        return dao.findAll();
     }
 }
