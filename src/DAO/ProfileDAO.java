@@ -2,6 +2,7 @@ package DAO;
 
 import Model.Profile;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -26,5 +27,18 @@ public class ProfileDAO {
         return Optional.ofNullable(profiles.get(id));
     }
 
-    //!!WILL ADD DELETE, UPDATE, FINDALL!!
+    public void Update()
+    {
+
+    }
+
+    public boolean Delete()
+    {
+        return false;
+    }
+
+    public List<Profile> findAll()
+    {
+        return null;
+    }
 }

@@ -3,6 +3,7 @@ package Service;
 import DAO.ProfileDAO;
 import Model.Profile;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ProfileService {
@@ -27,5 +28,18 @@ public class ProfileService {
         }
     }
 
-    //WILL ADD DELTE(true/false), UPDATE(void), FINDALL(list)
+    public void Update()
+    {
+
+    }
+
+    public boolean Delete()
+    {
+        return false;
+    }
+
+    public List<Profile> findAll()
+    {
+        return null;
+    }
 }
