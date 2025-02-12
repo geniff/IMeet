@@ -1,6 +1,6 @@
-package Service;
+package BL.Service;
 
-import DAO.ProfileDAO;
+import DAL.DAO.ProfileDAO;
 import Model.Profile;
 
 import java.util.List;

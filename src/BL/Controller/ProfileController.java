@@ -1,7 +1,6 @@
-package Controller;
+package BL.Controller;
 
-import Model.Profile;
-import Service.ProfileService;
+import BL.Service.ProfileService;
 
 public class ProfileController {
     private final ProfileService profileService;

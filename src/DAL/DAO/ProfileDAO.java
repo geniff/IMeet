@@ -1,4 +1,4 @@
-package DAO;
+package DAL.DAO;
 
 import Model.Profile;
 

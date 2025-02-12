@@ -1,10 +1,12 @@
+package Components;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Main {
+public class    IMeetsClientRunner {
     public static void main(String[] args) {
         try (Socket socket = new Socket("localhost", 8080);
              DataOutputStream rqStream = new DataOutputStream(socket.getOutputStream());
