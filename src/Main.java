@@ -2,26 +2,30 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) {
         try (Socket socket = new Socket("localhost", 8080);
-             //request
              DataOutputStream rqStream = new DataOutputStream(socket.getOutputStream());
-             //response
-             DataInputStream rpStream = new DataInputStream(socket.getInputStream());
-             Scanner scanner = new Scanner(System.in))
-        {
-            while (scanner.hasNext())
-            {
-                String request = scanner.next();
+             DataInputStream rsStream = new DataInputStream(socket.getInputStream());
+             Scanner scanner = new Scanner(System.in)) {
+
+            while (true) {
+                String request = scanner.nextLine();
                 rqStream.writeUTF(request);
-                String response = rpStream.readUTF();
+
+                // Проверка на команду "stop" для завершения клиента
+                if ("stop".equals(request)) {
+                    break;
+                }
+
+                // Чтение ответа от сервера
+                String response = rsStream.readUTF();
                 System.out.println(response);
             }
+        } catch (IOException e) {
+            e.printStackTrace(); // Обработка исключений
         }
     }
-} 
+}
