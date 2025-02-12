@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="lmeets-back:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/lmeets_back_jar2</output-path>
+    <root id="archive" name="lmeets-back.jar">
+      <element id="module-output" name="lmeets-back" />
+    </root>
+  </artifact>
+</component>
