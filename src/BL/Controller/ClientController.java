@@ -8,7 +8,7 @@ import java.net.Socket;
 // Класс для обработки клиента в отдельном потоке
 public class ClientController extends Thread {
     public final Socket socket;
-    public DataOutputStream outputStream;
+    public DataOutputStream outputStream;//поток для отправки данных клиенту
     private final int clientId;
 
     public ClientController(Socket socket, int clientId)
@@ -17,11 +17,12 @@ public class ClientController extends Thread {
         this.clientId = clientId;
     }
 
+    //метод, который выполняется при запуске потока
     @Override
     public void run() {
-        try (DataInputStream inputStream = new DataInputStream(socket.getInputStream()))
+        try (DataInputStream inputStream = new DataInputStream(socket.getInputStream()))//создаем поток для чтения данных из сокета
         {
-            outputStream = new DataOutputStream(socket.getOutputStream());
+            outputStream = new DataOutputStream(socket.getOutputStream());//инициализируем поток для отправки данных клиенту
             String request;
             while (true)
             {
