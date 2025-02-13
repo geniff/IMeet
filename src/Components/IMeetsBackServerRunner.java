@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class IMeetsBackServerRunner {
+public class IMeetsBackServerRunner
+{
     private static final Map<Integer, ClientController> clients = new HashMap<>();
     private static int clientCounter = 0;
 

@@ -11,19 +11,23 @@ public class ClientController extends Thread {
     public DataOutputStream outputStream;
     private final int clientId;
 
-    public ClientController(Socket socket, int clientId) {
+    public ClientController(Socket socket, int clientId)
+    {
         this.socket = socket;
         this.clientId = clientId;
     }
 
     @Override
     public void run() {
-        try (DataInputStream inputStream = new DataInputStream(socket.getInputStream())) {
+        try (DataInputStream inputStream = new DataInputStream(socket.getInputStream()))
+        {
             outputStream = new DataOutputStream(socket.getOutputStream());
             String request;
-            while (true) {
+            while (true)
+            {
                 request = inputStream.readUTF();
-                if ("stop".equals(request)) {
+                if ("stop".equals(request))
+                {
                     System.out.println("Клиент " + clientId + " отключился: " + socket.getInetAddress());
                     break; // Выход из цикла при получении "stop"
                 }
