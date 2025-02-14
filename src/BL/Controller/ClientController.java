@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import static Components.IMeetsBackServerRunner.clients;
+
 // Класс для обработки клиента в отдельном потоке
 public class ClientController extends Thread {
     public final Socket socket;
@@ -34,22 +36,36 @@ public class ClientController extends Thread {
                 }
                 System.out.println("Получено от клиента " + clientId + ": "  + request);
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Ошибка при обработке клиента " + clientId + ": " + e.getMessage());
-        } finally {
-            try {
+        }
+
+        finally
+        {
+            clients.remove(clientId);
+            try
+            {
                 socket.close(); // Закрытие сокета после завершения работы с клиентом
-            } catch (IOException e) {
+            }
+
+            catch (IOException e)
+            {
                 System.out.println("Ошибка при закрытии сокета: " + e.getMessage());
             }
         }
     }
-
     // Метод для отправки сообщения клиенту
-    public void sendMessage(String message) {
-        try {
+    public void sendMessage(String message)
+    {
+        try
+        {
             outputStream.writeUTF(message);
-        } catch (IOException e) {
+        }
+
+        catch (IOException e)
+        {
             System.out.println("Ошибка при отправке сообщения клиенту: " + clientId + e.getMessage());
         }
     }
