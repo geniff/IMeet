@@ -44,14 +44,19 @@ public class AdminController extends Thread {
         }
     }
 
-    public void sendMessageToClient(int clientId, String message) throws IOException {
+    public void sendMessageToClient(int clientId, String message) {
         ClientController client = clients.get(clientId);
         if (client != null) {
-            dataOut.writeUTF("send " + clientId + " " + message);
+            if (client.socket != null && !client.socket.isClosed()) {
+                client.sendMessage("send " + clientId + " " + message);
+            } else {
+                System.out.println("Сокет клиента " + clientId + " закрыт.");
+            }
         } else {
             System.out.println("Клиент с ID " + clientId + " не найден.");
         }
     }
+
 
     public void closeSocket() {
         try {

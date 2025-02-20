@@ -61,7 +61,15 @@ public class ClientController extends Thread {
     {
         try
         {
-            outputStream.writeUTF(message);
+            if(outputStream != null)
+            {
+                outputStream.writeUTF(message);
+            }
+
+            else
+            {
+                System.out.println("Поток вывода не инициализирован.");
+            }
         }
 
         catch (IOException e)

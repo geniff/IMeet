@@ -58,10 +58,6 @@ public class IMeetsAdminClientRunner
                         }
                     }
                 }
-                catch (IOException e)
-                {
-                    throw new RuntimeException(e);
-                }
             }).start();
         }
 
